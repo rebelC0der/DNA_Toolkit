@@ -3,16 +3,19 @@ import collections
 from structures import *
 
 
-# Check the sequence to make sure it is a DNA String
-def validateSeq(dna_seq):
-    tmpseq = dna_seq.upper()
+def validate_seq(seq):
+    """Check the sequence to make sure it is a valid DNA string"""
+
+    tmpseq = seq.upper()
     for nuc in tmpseq:
-        if nuc not in Nucleotides:
+        if nuc not in DNA_Nucleotides:
             return False
     return tmpseq
 
 
-def countNucFrequency(seq):
+def nucleotide_frequency(seq):
+    """Count nucleotides in a given sequence. Return a dictionary"""
+
     tmpFreqDict = {"A": 0, "C": 0, "G": 0, "T": 0}
     for nuc in seq:
         tmpFreqDict[nuc] += 1
