@@ -1,6 +1,6 @@
 # DNA Toolkit file
-import collections
 from structures import *
+# from collections import Counter
 
 
 def validate_seq(seq):
@@ -20,7 +20,9 @@ def nucleotide_frequency(seq):
     for nuc in seq:
         tmpFreqDict[nuc] += 1
     return tmpFreqDict
-    # return dict(collections.Counter(seq))
+
+    # More Pythonic, using Counter
+    # return dict(Counter(seq))
 
 
 def transcription(seq):
@@ -29,5 +31,12 @@ def transcription(seq):
 
 
 def reverse_complement(seq):
-    """Swapping adenine with thymine and guanine with cytosine. Reversing newly generated string"""
+    """
+    Swapping adenine with thymine and guanine with cytosine.
+    Reversing newly generated string
+    """
     return ''.join([DNA_ReverseComplement[nuc] for nuc in seq])[::-1]
+
+    # More Pythonic solution. A little bit faster solution.
+    # mapping = str.maketrans('ATCG', 'TAGC')
+    # return seq.translate(mapping)[::-1]
