@@ -73,3 +73,12 @@ def codon_usage(seq, aminoacid):
     for seq in freqDict:
         freqDict[seq] = round(freqDict[seq] / totalWight, 2)
     return freqDict
+
+
+def gen_reading_frames(seq):
+    """Generate the six reading frames of a DNA sequence, including reverse complement"""
+    frames = []
+    frames.append(translate_seq(seq, 0))
+    frames.append(translate_seq(seq, 1))
+    frames.append(translate_seq(seq, 2))
+    return frames
