@@ -81,4 +81,7 @@ def gen_reading_frames(seq):
     frames.append(translate_seq(seq, 0))
     frames.append(translate_seq(seq, 1))
     frames.append(translate_seq(seq, 2))
+    frames.append(translate_seq(reverse_complement(seq), 0))
+    frames.append(translate_seq(reverse_complement(seq), 1))
+    frames.append(translate_seq(reverse_complement(seq), 2))
     return frames
