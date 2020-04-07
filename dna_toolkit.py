@@ -105,3 +105,23 @@ def proteins_from_rf(aa_seq):
             for i in range(len(current_prot)):
                 current_prot[i] += aa
     return proteins
+
+
+def all_proteins_from_orfs(seq, startReadPos=0, endReadPos=0, ordered=False):
+    """Compute all possible proteins for all open reading frames"""
+    """Protine Search DB: https://www.ncbi.nlm.nih.gov/nuccore/NM_001185097.2"""
+    """API can be used to pull protein info"""
+    if endReadPos > startReadPos:
+        rfs = gen_reading_frames(seq[startRead: endRead])
+    else:
+        rfs = gen_reading_frames(seq)
+
+    res = []
+    for rf in rfs:
+        prots = proteins_from_rf(rf)
+        for p in prots:
+            res.append(p)
+
+    if ordered:
+        return sorted(res, key=len, reverse=True)
+    return res
